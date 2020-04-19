@@ -8,7 +8,7 @@ script:
   - docker build -t dhawton/staticserve .
 
 after_success:
-  - set
+  - echo "'$TRAVIS_BRANCH' '$TRAVIS_TAG'"
   - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_TAG" != "" ]; then
     docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
     docker tag dhawton/staticserve dhawton/staticserve:$TRAVIS_TAG;
