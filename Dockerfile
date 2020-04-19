@@ -8,6 +8,5 @@ FROM alpine:latest
 WORKDIR /app
 COPY --from=0 /build/start.sh .
 COPY --from=0 /build/app .
-COPY --from=0 /build/template.html .
-RUN chmod 755 /app/start.sh
+RUN chmod 755 /app/start.sh && mkdir /app/static && chmod 755 /app/static
 CMD ["/app/start.sh"]
